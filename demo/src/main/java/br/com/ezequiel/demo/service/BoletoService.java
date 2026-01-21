@@ -1,5 +1,6 @@
 package br.com.ezequiel.demo.service;
 
+import br.com.ezequiel.demo.controller.exception.ApplicationException;
 import br.com.ezequiel.demo.dto.BoletoDto;
 import br.com.ezequiel.demo.entity.BoletoEntity;
 import br.com.ezequiel.demo.entity.enums.SituacaoBoleto;
@@ -21,7 +22,7 @@ public class BoletoService {
         var boletoOptional = boletoRepository.findByCodigoBarras(codigoBarras);
 
         if(boletoOptional.isPresent()) {
-            throw new RuntimeException("Já existe uma solicitação de pagamento para esse boleto");
+            throw new ApplicationException("Já existe uma solicitação de pagamento para esse boleto");
         }
 
         var boletoEntity = BoletoEntity.builder()
