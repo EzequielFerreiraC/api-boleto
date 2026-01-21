@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Service
 public class BoletoService {
-    private final BoletoRepository boletoRepository;
+    private static BoletoRepository boletoRepository = null;
 
     public BoletoService(BoletoRepository boletoRepository) {
         this.boletoRepository = boletoRepository;
