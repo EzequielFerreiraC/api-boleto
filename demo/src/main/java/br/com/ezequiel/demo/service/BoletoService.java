@@ -17,7 +17,7 @@ public class BoletoService {
         this.boletoRepository = boletoRepository;
     }
 
-    public BoletoDto salvar(String codigoBarras) {
+    public static BoletoDto salvar(String codigoBarras) {
         var boletoOptional = boletoRepository.findByCodigoBarras(codigoBarras);
 
         if(boletoOptional.isPresent()) {
