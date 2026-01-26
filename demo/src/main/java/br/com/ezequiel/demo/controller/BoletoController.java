@@ -3,6 +3,7 @@ package br.com.ezequiel.demo.controller;
 import br.com.ezequiel.demo.dto.BoletoDto;
 import br.com.ezequiel.demo.dto.BoletoRequestDto;
 import br.com.ezequiel.demo.service.BoletoService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ public class BoletoController {
     }
 
     @PostMapping
-    public ResponseEntity<BoletoDto> salvar(@RequestBody BoletoRequestDto boletoRequestDto) {
+    public ResponseEntity<BoletoDto> salvar(@Valid @RequestBody BoletoRequestDto boletoRequestDto) {
         var boleto = BoletoService.salvar(boletoRequestDto.getCodigoBarras());
         return new ResponseEntity<>(boleto, HttpStatus.CREATED);
     }
